@@ -133,33 +133,47 @@ class CarouselOptions {
   /// Exposed clipBehavior of PageView
   final Clip clipBehavior;
 
+  /// Determines if other pages should be rotated then the current page,
+  /// creating a feeling of chain in the carousel.
+  ///
+  /// Defaults to false.
+  final double otherPagesRotation;
+
+  /// Curve used for enlarge and rotate animation
+  /// creating a feeling of chain in the carousel.
+  ///
+  /// Defaults to Curves.easeOut.
+  final Curve enlargeCurve;
+
   CarouselOptions({
     this.height,
-    this.aspectRatio: 16 / 9,
-    this.viewportFraction: 0.8,
-    this.initialPage: 0,
-    this.enableInfiniteScroll: true,
-    this.animateToClosest: true,
-    this.reverse: false,
-    this.autoPlay: false,
-    this.autoPlayInterval: const Duration(seconds: 4),
+    this.aspectRatio = 16 / 9,
+    this.viewportFraction = 0.8,
+    this.initialPage = 0,
+    this.enableInfiniteScroll = true,
+    this.animateToClosest = true,
+    this.reverse = false,
+    this.autoPlay = false,
+    this.autoPlayInterval = const Duration(seconds: 4),
     this.autoPlayAnimationDuration = const Duration(milliseconds: 800),
-    this.autoPlayCurve: Curves.fastOutSlowIn,
+    this.autoPlayCurve = Curves.fastOutSlowIn,
     this.enlargeCenterPage = false,
     this.onPageChanged,
     this.onScrolled,
     this.scrollPhysics,
     this.pageSnapping = true,
-    this.scrollDirection: Axis.horizontal,
-    this.pauseAutoPlayOnTouch: true,
-    this.pauseAutoPlayOnManualNavigate: true,
-    this.pauseAutoPlayInFiniteScroll: false,
+    this.scrollDirection = Axis.horizontal,
+    this.pauseAutoPlayOnTouch = true,
+    this.pauseAutoPlayOnManualNavigate = true,
+    this.pauseAutoPlayInFiniteScroll = false,
     this.pageViewKey,
-    this.enlargeStrategy: CenterPageEnlargeStrategy.scale,
-    this.enlargeFactor: 0.3,
-    this.disableCenter: false,
+    this.enlargeStrategy = CenterPageEnlargeStrategy.scale,
+    this.enlargeFactor = 0.3,
+    this.disableCenter = false,
     this.padEnds = true,
-    this.clipBehavior: Clip.hardEdge,
+    this.clipBehavior = Clip.hardEdge,
+    this.otherPagesRotation = 0,
+    this.enlargeCurve = Curves.easeOut,
   });
 
   ///Generate new [CarouselOptions] based on old ones.
@@ -199,8 +213,7 @@ class CarouselOptions {
         reverse: reverse ?? this.reverse,
         autoPlay: autoPlay ?? this.autoPlay,
         autoPlayInterval: autoPlayInterval ?? this.autoPlayInterval,
-        autoPlayAnimationDuration:
-            autoPlayAnimationDuration ?? this.autoPlayAnimationDuration,
+        autoPlayAnimationDuration: autoPlayAnimationDuration ?? this.autoPlayAnimationDuration,
         autoPlayCurve: autoPlayCurve ?? this.autoPlayCurve,
         enlargeCenterPage: enlargeCenterPage ?? this.enlargeCenterPage,
         onPageChanged: onPageChanged ?? this.onPageChanged,
@@ -209,10 +222,8 @@ class CarouselOptions {
         pageSnapping: pageSnapping ?? this.pageSnapping,
         scrollDirection: scrollDirection ?? this.scrollDirection,
         pauseAutoPlayOnTouch: pauseAutoPlayOnTouch ?? this.pauseAutoPlayOnTouch,
-        pauseAutoPlayOnManualNavigate:
-            pauseAutoPlayOnManualNavigate ?? this.pauseAutoPlayOnManualNavigate,
-        pauseAutoPlayInFiniteScroll:
-            pauseAutoPlayInFiniteScroll ?? this.pauseAutoPlayInFiniteScroll,
+        pauseAutoPlayOnManualNavigate: pauseAutoPlayOnManualNavigate ?? this.pauseAutoPlayOnManualNavigate,
+        pauseAutoPlayInFiniteScroll: pauseAutoPlayInFiniteScroll ?? this.pauseAutoPlayInFiniteScroll,
         pageViewKey: pageViewKey ?? this.pageViewKey,
         enlargeStrategy: enlargeStrategy ?? this.enlargeStrategy,
         enlargeFactor: enlargeFactor ?? this.enlargeFactor,
